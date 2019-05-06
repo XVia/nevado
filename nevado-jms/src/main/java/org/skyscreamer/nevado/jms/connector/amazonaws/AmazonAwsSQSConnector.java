@@ -99,8 +99,8 @@ public class AmazonAwsSQSConnector extends AbstractSQSConnector {
         		_amazonSQS = new AmazonSQSClient(awsCredentials, clientConfiguration);
         		_amazonSNS = new AmazonSNSClient(awsCredentials, clientConfiguration);
         	} else {
-        		AWSCredentialsProvider awsCredentialsProvider = new AWSCredentialsProviderChain(InstanceProfileCredentialsProvider.getInstance(),
-						new ProfileCredentialsProvider());
+        		AWSCredentialsProvider awsCredentialsProvider = new AWSCredentialsProviderChain(new ProfileCredentialsProvider(),
+        					InstanceProfileCredentialsProvider.getInstance());
         		_amazonSQS = new AmazonSQSClient(awsCredentialsProvider, clientConfiguration);
         		_amazonSNS = new AmazonSNSClient(awsCredentialsProvider, clientConfiguration);
         	}
